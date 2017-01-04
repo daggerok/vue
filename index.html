@@ -9,18 +9,34 @@
     <link rel="stylesheet" href="./app.css">
   </head>
   <body>
-    <div id="app">
-      <form>
-        <!-- this is doing display: none -->
-        <div v-show="!longMessage" class="error">please, enter something</div>
+    <div id="v-on">
+      <h2>handling events</h2>
 
-        <textarea name="name" v-model="longMessage"></textarea>
-        <br/>
-        <!-- this is copletely removing element from DOM: -->
-        <button v-if="longMessage" type="submit">send message</button>
+      <form v-on:submit.prevent="handler">
+        <button type="submit">click me</button>
       </form>
 
-      <hr/>
+      <pre>{{ $data }}</pre>
+    </div>
+
+    <div id="v-show-v-if">
+      <h2>v-show / v-if</h2>
+
+      <form v-on:submit="handler">
+        <!-- this is doing display: none -->
+        <div v-show="!message" class="error">please, enter something</div>
+
+        <textarea name="name" v-model="message"></textarea>
+        <br/>
+        <!-- this is copletely removing element from DOM: -->
+        <button v-if="message" type="submit">send message</button>
+      </form>
+
+      <pre>{{ $data }}</pre>
+    </div>
+
+    <div id="two-way-binding">
+      <h2>two-way binding</h1>
 
       <h3>{{ message }}</h3>
       <input type="text" v-model="message">
@@ -28,6 +44,7 @@
       <p>getting access to data object:</p>
       <pre>{{ $data }}</pre>
     </div>
+
     <script src="./node_modules/vue/dist/vue.min.js" charset="utf-8"></script>
     <script src="./app.js" charset="utf-8"></script>
   </body>
