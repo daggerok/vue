@@ -9,9 +9,11 @@
   </head>
   <body>
     <div id="app">
-      {{ message }}
-      <br/>
+      <h3>{{ message }}</h3>
       <input type="text" v-model="message">
+
+      <p>getting access to data object:</p>
+      <pre>{{ $data }}</pre>
     </div>
     <script src="./node_modules/vue/dist/vue.min.js" charset="utf-8"></script>
     <script src="./app.js" charset="utf-8"></script>
