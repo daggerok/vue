@@ -12,7 +12,8 @@
     <div id="counter-app">
       <h2>counter</h2>
 
-      <button @click.stop="increment" type="submit">counter: {{ counter }}</button>
+      <button @click.stop="increment" type="submit">increment counter: {{ counter }}</button>
+      <button @click="counter *= 2" type="submit">double counter: {{ counter }}</button>
     </div>
 
     <div id="v-on">
