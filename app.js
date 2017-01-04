@@ -6,6 +6,7 @@
     el: '#app',
     data: {
       message: 'hi!',
+      longMessage: '',
     },
   });
 

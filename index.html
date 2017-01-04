@@ -6,9 +6,19 @@
     <title>vue</title>
     <link rel="shortcut icon" href="./favicon.ico">
     <link rel="stylesheet" href="./node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="./app.css">
   </head>
   <body>
     <div id="app">
+      <form>
+        <div v-show="!longMessage" class="error">please, enter something</div>
+        <textarea name="name" v-model="longMessage"></textarea>
+        <br/>
+        <button type="submit">send message</button>
+      </form>
+
+      <hr/>
+
       <h3>{{ message }}</h3>
       <input type="text" v-model="message">
 
