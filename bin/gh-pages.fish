@@ -3,7 +3,6 @@
 npm i; npm run build
 sed -i -e "s/\(<base href=\"\/\">\)/<base href=\"\/vue\/\"\/>/g" dist/index.html
 sed -i -e 's/^dist\/$/#dist\//g' .gitignore
-echo "script: echo test" > dist/.travis.yml
 cp -Rf dist/index.html dist/404.html
 cp -Rf README.md dist/
 touch dist/.nojekyll
