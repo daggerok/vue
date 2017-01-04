@@ -4,3 +4,4 @@
 node_modules/
 vendors/
 dist/
+!dist/node_modules/
