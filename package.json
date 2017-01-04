@@ -1,0 +1,28 @@
+{
+  "name": "vue-js",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "rimraf -rf dist",
+    "build": "npm-run-all build:*",
+    "build:copy-index": "copy index.html dist/",
+    "build:copy-favicon": "copy favicon.ico dist/",
+    "build:copy-vendors": "copy node_modules/vue/dist/vue.min.js dist/",
+    "build:js": "uglifyjs app.js --output dist/app.js --source-map dist/app.js.map --compress --mangle --support-ie8",
+    "start": "lite-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "2.1.8"
+  },
+  "devDependencies": {
+    "copy": "0.3.0",
+    "lite-server": "2.2.2",
+    "ncp": "2.0.0",
+    "npm-run-all": "4.0.0",
+    "rimraf": "2.5.4"
+  }
+}
