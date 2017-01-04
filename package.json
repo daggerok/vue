@@ -8,18 +8,21 @@
     "build": "npm-run-all build:*",
     "build:copy-index": "copy index.html dist/",
     "build:copy-favicon": "copy favicon.ico dist/",
-    "build:copy-vendors": "copy node_modules/vue/dist/vue.min.js dist/",
+    "build:copy-vendors": "copy node_modules/{normalize.css/normalize.css,vue/dist/vue.min.js} dist/",
     "build:js": "uglifyjs app.js --output dist/app.js --source-map dist/app.js.map --compress --mangle --support-ie8",
+    "build:css": "cssmin node_modules/normalize.css/normalize.css > dist/node_modules/normalize.css/normalize.css",
     "start": "lite-server"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "normalize.css": "^5.0.0",
     "vue": "2.1.8"
   },
   "devDependencies": {
     "copy": "0.3.0",
+    "cssmin": "^0.4.3",
     "lite-server": "2.2.2",
     "ncp": "2.0.0",
     "npm-run-all": "4.0.0",
