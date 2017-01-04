@@ -22,14 +22,14 @@
     <div id="v-show-v-if">
       <h2>v-show / v-if</h2>
 
-      <form v-on:submit="handler">
+      <form>
         <!-- this is doing display: none -->
         <div v-show="!message" class="error">please, enter something</div>
 
         <textarea name="name" v-model="message"></textarea>
         <br/>
         <!-- this is copletely removing element from DOM: -->
-        <button v-if="message" type="submit">send message</button>
+        <button @click="handler" v-if="message" type="submit">send message</button>
       </form>
 
       <pre>{{ $data }}</pre>
