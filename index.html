@@ -11,15 +11,13 @@
   <body>
     <div id="app">
       <form>
-        <!-- this is copletely removing element from DOM: -->
-        <!-- <div v-if="!longMessage" class="error">please, enter something</div> -->
-
         <!-- this is doing display: none -->
         <div v-show="!longMessage" class="error">please, enter something</div>
 
         <textarea name="name" v-model="longMessage"></textarea>
         <br/>
-        <button type="submit">send message</button>
+        <!-- this is copletely removing element from DOM: -->
+        <button v-if="longMessage" type="submit">send message</button>
       </form>
 
       <hr/>
