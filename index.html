@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="./app.css">
   </head>
   <body>
+    <div id="counter-app">
+      <h2>counter</h2>
+
+      <button @click.stop="increment" type="submit">counter: {{ counter }}</button>
+    </div>
+
     <div id="v-on">
       <h2>handling events</h2>
 

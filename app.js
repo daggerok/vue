@@ -3,6 +3,18 @@
 (function () {
 
   new Vue({
+    el: '#counter-app',
+    data: {
+      counter: 0,
+    },
+    methods: {
+      increment: function(event) {
+        this.counter++;
+      },
+    },
+  });
+
+  new Vue({
     el: '#v-on',
     methods: {
       handler: function(event) {
