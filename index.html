@@ -9,6 +9,18 @@
     <link rel="stylesheet" href="./app.css">
   </head>
   <body>
+    <template id="counter-template">
+      <button @click="count" type="button">{{ title }}: {{ counter }}</button>
+    </template>
+
+    <div id="component">
+      <h2>component</h2>
+
+      <my-counter title="like"></my-counter>
+      <my-counter title="dislike"></my-counter>
+
+    </div>
+
     <div id="counter-app">
       <h2>counter</h2>
 

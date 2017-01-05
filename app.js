@@ -1,6 +1,33 @@
 'use static';
 
 (function () {
+  // // Global component:
+  // Vue.component('my-counter', {
+  //   template: '#counter-template',
+  //   props: ['title'],
+  //   data: function() {
+  //     return { counter: 0, };
+  //   },
+  // });
+
+  new Vue({
+    el: '#component',
+    components: {
+      // local conponent
+      myCounter: {
+        template: '#counter-template',
+        props: ['title'],
+        data: function() {
+          return { counter: 0, };
+        },
+        methods: {
+          count: function() {
+            return this.counter++;
+          },
+        }
+      },
+    }
+  });
 
   new Vue({
     el: '#counter-app',
