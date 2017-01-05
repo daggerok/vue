@@ -1,6 +1,23 @@
 'use static';
 
 (function () {
+
+  new Vue({
+    el: '#v-for',
+    data: {
+      users: [
+        { username: 'daggerok', fullName: 'Maksim Kostromin', },
+        { username: 'bbt', fullName: 'Billy Bob Thornton', },
+      ],
+    },
+    components: {
+      'my-user': {
+        template: '#my-user',
+        props: [ 'user' ],
+      },
+    },
+  });
+
   // // Global component:
   // Vue.component('my-counter', {
   //   template: '#counter-template',
