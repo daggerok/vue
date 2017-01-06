@@ -3,6 +3,23 @@
 (function () {
 
   new Vue({
+    el: '#todo-list-app',
+    data: {
+      tasks: [
+        { body: 'eat', completed: false, },
+        { body: 'sleep', completed: false, },
+        { body: 'work', completed: true, },
+      ],
+    },
+    components: {
+      'todo-item': {
+        template: '#todo-item',
+        props: ['task'],
+      },
+    },
+  });
+
+  new Vue({
     el: '#v-for',
     data: {
       users: [

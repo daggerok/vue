@@ -10,6 +10,22 @@
   </head>
   <body>
 
+    <template id="todo-item">
+      <div
+        :class="{ 'done': task.completed }"
+        @click="task.completed = !task.completed">
+        {{ task.body }}
+      </div>
+    </template>
+
+    <div id="todo-list-app">
+      <ul>
+        <li v-for="task in tasks">
+          <todo-item :task="task"></todo-item>
+        </li>
+      </ul>
+    </div>
+
     <template id="my-user">
       <span>user identifier: {{ user.username }}</span>
       <span>user full name: {{ user.fullName }}</span>
