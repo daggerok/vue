@@ -11,11 +11,14 @@
   <body>
 
     <template id="todo-list">
-      <ul class="list-style-none">
-        <li v-for="task in tasks">
-          <todo-item :task="task"></todo-item>
-        </li>
-      </ul>
+      <div>
+        <h3>TODO list ({{ remaining }} of {{ tasks.length }})</h3>
+        <ul class="list-style-none">
+          <li v-for="task in tasks">
+            <todo-item :task="task"></todo-item>
+          </li>
+        </ul>
+      </div>
     </template>
 
     <template id="todo-item">

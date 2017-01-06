@@ -1,10 +1,4 @@
-sudo: required
-dist: trusty
 language: node_js
 node_js: 7
-install: true
-script:
-  - npm i
-  - npm run build
-  - if [ -f npm-debug.log ]; then cat npm-debug.log; fi
+script: npm run travis-ci
 cache.directories: node_modules/

@@ -15,6 +15,13 @@
       'todo-list': {
         template: '#todo-list',
         props: ['tasks'],
+        computed: {
+          remaining: function() {
+            return this.tasks.filter(function(task) {
+              return !task.completed;
+            }).length;
+          },
+        },
         components: {
           'todo-item': {
             template: '#todo-item',
