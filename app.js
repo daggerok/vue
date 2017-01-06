@@ -21,17 +21,14 @@
           },
         },
         methods: {
-          isDone: function isDone(task) {
-            return task.completed;
-          },
           isInProgress: function isInProgress(task) {
-            return !this.isDone(task);
+            return !task.completed;
           },
           del: function del(task) {
             const self = this;
-            this.tasks.forEach(function forEach(t, i) {
-              if (task.body === t.body) {
-                self.tasks.splice(i, 1);
+            this.tasks.forEach(function forEach(curr, index) {
+              if (task == curr) {
+                self.tasks.splice(index, 1);
               }
             });
           },
@@ -39,7 +36,17 @@
         components: {
           'todo-item': {
             template: '#todo-item',
-            props: ['task', 'del'],
+            props: [
+              'task',
+              'del',
+            ],
+            computed: {
+              classObject: function () {
+                return {
+                  done: this.task.completed,
+                };
+              },
+            },
           },
         },
       },

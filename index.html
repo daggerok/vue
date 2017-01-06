@@ -12,20 +12,26 @@
 
     <template id="todo-list">
       <div>
-        <h3>
-          TODO list
-          <span v-show="remaining > 0">({{ remaining }} of {{ tasks.length }})</span>
+        <div v-if="tasks.length">
+          <h3>
+            TODO list
+            <span v-show="remaining > 0">({{ remaining }} of {{ tasks.length }})</span>
+          </h3>
+          <ul class="list-style-none">
+            <li v-for="task in tasks">
+              <todo-item :task="task" :del="del"></todo-item>
+            </li>
+          </ul>
+        </div>
+
+        <h3 v-else>
+          there are no tasks... at all
         </h3>
-        <ul class="list-style-none">
-          <li v-for="task in tasks">
-            <todo-item :task="task" :del="del"></todo-item>
-          </li>
-        </ul>
       </div>
     </template>
 
     <template id="todo-item">
-      <div :class="{ 'done': task.completed }"
+      <div v-bind:class="classObject"
            @click="task.completed = !task.completed">
         {{ task.body }}
         <span @click="del(task)">x</span>
