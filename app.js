@@ -1,6 +1,6 @@
 'use static';
 
-(function () {
+(function app() {
 
   new Vue({
     el: '#todo-list-app',
@@ -16,10 +16,16 @@
         template: '#todo-list',
         props: ['tasks'],
         computed: {
-          remaining: function() {
-            return this.tasks.filter(function(task) {
-              return !task.completed;
+          remaining: function remaining() {
+            const self = this;
+            return this.tasks.filter(function filterTask(task) {
+              return !self.done(task);
             }).length;
+          },
+        },
+        methods: {
+          done: function done(task) {
+            return task.completed;
           },
         },
         components: {
@@ -52,7 +58,7 @@
   // Vue.component('my-counter', {
   //   template: '#counter-template',
   //   props: ['title'],
-  //   data: function() {
+  //   data: function data() {
   //     return { counter: 0, };
   //   },
   // });
@@ -64,11 +70,11 @@
       myCounter: {
         template: '#counter-template',
         props: ['title'],
-        data: function() {
+        data: function data() {
           return { counter: 0, };
         },
         methods: {
-          count: function() {
+          count: function count() {
             return this.counter++;
           },
         }
@@ -82,7 +88,7 @@
       counter: 0,
     },
     methods: {
-      increment: function(event) {
+      increment: function increment(event) {
         this.counter++;
       },
     },
@@ -91,7 +97,7 @@
   new Vue({
     el: '#v-on',
     methods: {
-      handler: function(event) {
+      handler: function handler(event) {
         // event.preventDefault();
         console.log('hi', event);
       },
@@ -104,7 +110,7 @@
       message: '',
     },
     methods: {
-      handler: function(event) {
+      handler: function handler(event) {
         event.preventDefault();
         console.log('clicked', JSON.stringify(this.$data));
         this.$data.message = '';
