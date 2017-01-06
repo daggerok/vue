@@ -18,7 +18,7 @@
         </h3>
         <ul class="list-style-none">
           <li v-for="task in tasks">
-            <todo-item :task="task"></todo-item>
+            <todo-item :task="task" :del="del"></todo-item>
           </li>
         </ul>
       </div>
@@ -28,6 +28,7 @@
       <div :class="{ 'done': task.completed }"
            @click="task.completed = !task.completed">
         {{ task.body }}
+        <span @click="del(task)">x</span>
       </div>
     </template>
 

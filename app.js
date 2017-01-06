@@ -27,11 +27,19 @@
           isInProgress: function isInProgress(task) {
             return !this.isDone(task);
           },
+          del: function del(task) {
+            const self = this;
+            this.tasks.forEach(function forEach(t, i) {
+              if (task.body === t.body) {
+                self.tasks.splice(i, 1);
+              }
+            });
+          },
         },
         components: {
           'todo-item': {
             template: '#todo-item',
-            props: ['task'],
+            props: ['task', 'del'],
           },
         },
       },
