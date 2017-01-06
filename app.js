@@ -17,15 +17,15 @@
         props: ['tasks'],
         computed: {
           remaining: function remaining() {
-            const self = this;
-            return this.tasks.filter(function filterTask(task) {
-              return !self.done(task);
-            }).length;
+            return this.tasks.filter(this.isInProgress).length;
           },
         },
         methods: {
-          done: function done(task) {
+          isDone: function isDone(task) {
             return task.completed;
+          },
+          isInProgress: function isInProgress(task) {
+            return !this.isDone(task);
           },
         },
         components: {
