@@ -12,9 +12,15 @@
       ],
     },
     components: {
-      'todo-item': {
-        template: '#todo-item',
-        props: ['task'],
+      'todo-list': {
+        template: '#todo-list',
+        props: ['tasks'],
+        components: {
+          'todo-item': {
+            template: '#todo-item',
+            props: ['task'],
+          },
+        },
       },
     },
   });

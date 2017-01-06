@@ -10,25 +10,31 @@
   </head>
   <body>
 
-    <template id="todo-item">
-      <div
-        :class="{ 'done': task.completed }"
-        @click="task.completed = !task.completed">
-        {{ task.body }}
-      </div>
-    </template>
-
-    <div id="todo-list-app">
+    <template id="todo-list">
       <ul class="list-style-none">
         <li v-for="task in tasks">
           <todo-item :task="task"></todo-item>
         </li>
       </ul>
+    </template>
+
+    <template id="todo-item">
+      <div :class="{ 'done': task.completed }"
+           @click="task.completed = !task.completed">
+
+        {{ task.body }}
+      </div>
+    </template>
+
+    <div id="todo-list-app">
+      <todo-list :tasks="tasks"></todo-list>
     </div>
 
     <template id="my-user">
-      <span>user identifier: {{ user.username }}</span>
-      <span>user full name: {{ user.fullName }}</span>
+      <span>
+        <span>user identifier: {{ user.username }}</span>
+        <span>user full name: {{ user.fullName }}</span>
+      </span>
     </template>
 
     <div id="v-for">
@@ -95,7 +101,7 @@
       <pre>{{ $data }}</pre>
     </div>
 
-    <script src="./node_modules/vue/dist/vue.min.js" charset="utf-8"></script>
+    <script src="./node_modules/vue/dist/vue.js" charset="utf-8"></script>
     <script src="./app.js" charset="utf-8"></script>
   </body>
 </html>
