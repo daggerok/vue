@@ -21,7 +21,6 @@
     <template id="todo-item">
       <div :class="{ 'done': task.completed }"
            @click="task.completed = !task.completed">
-
         {{ task.body }}
       </div>
     </template>
@@ -29,6 +28,8 @@
     <div id="todo-list-app">
       <todo-list :tasks="tasks"></todo-list>
     </div>
+
+    <hr/>
 
     <template id="my-user">
       <span>
@@ -43,8 +44,9 @@
       <ul v-for="user in users">
         <my-user :user="user"></my-user>
       </ul>
-
     </div>
+
+    <hr/>
 
     <template id="counter-template">
       <button @click="count" type="button">{{ title }}: {{ counter }}</button>
@@ -55,8 +57,9 @@
 
       <my-counter title="like"></my-counter>
       <my-counter title="dislike"></my-counter>
-
     </div>
+
+    <hr/>
 
     <div id="counter-app">
       <h2>counter</h2>
@@ -64,6 +67,8 @@
       <button @click.stop="increment" type="submit">increment counter: {{ counter }}</button>
       <button @click="counter *= 2" type="submit">double counter: {{ counter }}</button>
     </div>
+
+    <hr/>
 
     <div id="v-on">
       <h2>handling events</h2>
@@ -74,6 +79,8 @@
 
       <pre>{{ $data }}</pre>
     </div>
+
+    <hr/>
 
     <div id="v-show-v-if">
       <h2>v-show / v-if</h2>
@@ -90,6 +97,8 @@
 
       <pre>{{ $data }}</pre>
     </div>
+
+    <hr/>
 
     <div id="two-way-binding">
       <h2>two-way binding</h1>
