@@ -12,7 +12,10 @@
 
     <template id="todo-list">
       <div>
-        <h3>TODO list ({{ remaining }} of {{ tasks.length }})</h3>
+        <h3>
+          TODO list
+          <span v-show="remaining > 0">({{ remaining }} of {{ tasks.length }})</span>
+        </h3>
         <ul class="list-style-none">
           <li v-for="task in tasks">
             <todo-item :task="task"></todo-item>
