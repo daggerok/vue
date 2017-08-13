@@ -6,30 +6,20 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf -rf ./dist",
-
-    "pretravis-ci": "npm run clean",
-    "travis-ci": "npm-run-all travis-ci:*",
-    "travis-ci:mkdir": "mkdir -pv ./dist/node_modules/normalize.css ./dist/node_modules/vue/dist",
-    "travis-ci:cp-normalize": "cp -Rf ./node_modules/normalize.css/normalize.css ./dist/node_modules/normalize.css/",
-    "travis-ci:cp-vue": "cp -Rf ./node_modules/vue/dist/vue.min.js ./dist/node_modules/vue/dist/",
-    "travis-ci:cp-favicon": "cp -Rf ./favicon.ico ./dist/",
-    "travis-ci:prod": "npm-run-all prod:*",
-
-    "prebuild": "npm run clean",
+    "mkdir": "mkdir -pv ./dist",
+    "favicon": "ncp ./favicon.ico ./dist/favicon.ico",
+    "nojekyll": "ncp ./.nojekyll ./dist/.nojekyll",
+    "prepare": "npm-run-all clean mkdir favicon nojekyll",
+    "prebuild": "npm run prepare",
     "build": "npm-run-all build:*",
-    "build:copy-favicon": "copy ./favicon.ico ./dist",
-    "build:copy-vendors": "copy ./node_modules/{normalize.css/normalize.css,vue/dist/vue.js} ./dist",
-    "build:prod": "npm-run-all prod:*",
-
-    "prod:html": "html-minifier ./index.html -o ./dist/index.html --html5 --remove-script-type-attributes --remove-style-link-type-attributes --collapse-whitespace --remove-comments",
-    "prod:normalize": "cssmin ./node_modules/normalize.css/normalize.css > ./dist/node_modules/normalize.css/normalize.css",
-    "prod:vue": "uglifyjs ./node_modules/vue/dist/vue.min.js --output ./dist/node_modules/vue/dist/vue.js",
-    "prod:css": "cssmin ./app.css > ./dist/app.css",
-    "prod:js": "uglifyjs app.js --output ./dist/app.js --source-map ./dist/app.js.map --compress --mangle --support-ie8",
-
+    "build:html-minifier": "html-minifier ./index.html -o ./dist/index.html --html5 --remove-script-type-attributes --remove-style-link-type-attributes --collapse-whitespace --remove-comments",
+    "build:cssmin": "cssmin ./app.css > ./dist/app.css",
+    "build:uglifyjs": "uglifyjs app.js --output ./dist/app.js --source-map ./dist/app.js.map --compress --mangle --support-ie8",
     "start": "lite-server",
-
-    "predeploy": "npm run build",
+    "serve": "serve -o -p 3000 -s ./dist",
+    "predeploy": "npm-run-all build predeploy:*",
+    "predeploy:base-href": "bash ./bin/replace-href.bash ./dist/index.html",
+    "predeploy:404-html": "ncp ./dist/index.html ./dist/404.html",
     "deploy": "gh-pages -d dist -b gh-pages -m \"Github Pages deployment ($(date +%Y-%m-%d))\""
   },
   "keywords": [
@@ -43,7 +33,6 @@
     "vue": "2.4.2"
   },
   "devDependencies": {
-    "copy": "0.3.0",
     "cssmin": "0.4.3",
     "gh-pages": "1.0.0",
     "html-minifier": "3.5.3",
@@ -51,6 +40,7 @@
     "ncp": "2.0.0",
     "npm-run-all": "4.0.2",
     "rimraf": "2.6.1",
+    "serve": "6.0.6",
     "uglify-js": "2.8.29"
   }
 }
