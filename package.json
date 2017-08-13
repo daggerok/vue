@@ -18,7 +18,7 @@
     "build:uglifyjs": "uglifyjs app.js --output ./dist/app.js --source-map ./dist/app.js.map --compress --mangle --support-ie8",
     "serve": "serve -o -p 3000 -s ./dist",
     "predeploy": "npm-run-all predeploy:*",
-    "predeploy:deploy": "npm run build",
+    "predeploy:build": "npm run build",
     "predeploy:base-href": "bash ./bin/replace-href.bash ./dist/index.html",
     "predeploy:404-html": "ncp ./dist/index.html ./dist/404.html",
     "deploy": "gh-pages -d dist -b gh-pages -m \"Github Pages deployment ($(date +%Y-%m-%d))\""

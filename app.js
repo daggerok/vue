@@ -1,6 +1,5 @@
-'use static';
-
 (function app() {
+  'use strict';
   new Vue({
     el: '#app',
     data: {
