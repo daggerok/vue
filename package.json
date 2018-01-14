@@ -31,13 +31,13 @@
   "license": "ISC",
   "devDependencies": {
     "cssmin": "0.4.3",
-    "gh-pages": "1.0.0",
-    "html-minifier": "3.5.3",
+    "gh-pages": "1.1.0",
+    "html-minifier": "3.5.8",
     "lite-server": "2.3.0",
     "ncp": "2.0.0",
-    "npm-run-all": "4.0.2",
-    "rimraf": "2.6.1",
-    "serve": "6.0.6",
-    "uglify-js": "2.8.29"
+    "npm-run-all": "4.1.2",
+    "rimraf": "2.6.2",
+    "serve": "6.4.8",
+    "uglify-js": "3.3.7"
   }
 }
