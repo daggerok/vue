@@ -15,7 +15,7 @@
     "build": "npm-run-all build:*",
     "build:html-minifier": "html-minifier ./index.html -o ./dist/index.html --html5 --remove-script-type-attributes --remove-style-link-type-attributes --collapse-whitespace --remove-comments",
     "build:cssmin": "cssmin ./app/app.css > ./dist/app/app.css",
-    "build:uglifyjs": "uglifyjs ./app/app.js --output ./dist/app/app.js --source-map ./dist/app/app.js.map --compress --mangle --support-ie8",
+    "build:uglifyjs": "uglifyjs --output ./dist/app/app.js --source-map --compress --mangle --ie8 ./app/app.js",
     "serve": "serve -o -p 3000 -s ./dist",
     "predeploy": "npm-run-all predeploy:*",
     "predeploy:build": "npm run build",
