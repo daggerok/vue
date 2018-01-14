@@ -6,22 +6,13 @@
   "main": "index.html",
   "scripts": {
     "start": "lite-server",
-    "prepare": "npm-run-all prepare:*",
-    "prepare:clean": "rimraf -rf ./dist",
-    "prepare:mkdir": "mkdir -pv ./dist/app",
-    "prepare:nojekyll": "ncp ./.nojekyll ./dist/.nojekyll",
-    "prepare:resources": "ncp ./resources ./dist/resources",
-    "prebuild": "npm run prepare",
-    "build": "npm-run-all build:*",
-    "build:html-minifier": "html-minifier ./index.html -o ./dist/index.html --html5 --remove-script-type-attributes --remove-style-link-type-attributes --collapse-whitespace --remove-comments",
-    "build:cssmin": "cssmin ./app/app.css > ./dist/app/app.css",
-    "build:uglifyjs": "uglifyjs --output ./dist/app/app.js --source-map --compress --mangle --ie8 ./app/app.js",
-    "serve": "serve -o -p 3000 -s ./dist",
-    "predeploy": "npm-run-all predeploy:*",
-    "predeploy:build": "npm run build",
-    "predeploy:base-href": "bash ./bin/replace-href.bash ./dist/index.html",
-    "predeploy:404-html": "ncp ./dist/index.html ./dist/404.html",
-    "deploy": "gh-pages -d dist -b gh-pages -m \"Github Pages deployment ($(date +%Y-%m-%d))\""
+    "build": "parcel build ./app/index.html",
+    "preghpages": "npm-run-all preghpages:*",
+    "preghpages:clean": "rimraf -rf ./dist",
+    "preghpages:build": "parcel build ./app/index.html --public-url '/vue-example/'",
+    "preghpages:404-html": "ncp ./dist/index.html ./dist/404.html",
+    "preghpages:nojekyll": "touch ./dist/.nojekyll",
+    "ghpages": "gh-pages --dist ./dist/ --src '**/*' --branch gh-pages -m \"Parcel Github Pages deployment ($(date +%Y-%m-%d))\""
   },
   "keywords": [
     "vue.js",
@@ -30,14 +21,17 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cssmin": "0.4.3",
+    "babel-preset-env": "1.6.1",
     "gh-pages": "1.1.0",
-    "html-minifier": "3.5.8",
-    "lite-server": "2.3.0",
     "ncp": "2.0.0",
     "npm-run-all": "4.1.2",
+    "parcel-bundler": "1.4.1",
     "rimraf": "2.6.2",
-    "serve": "6.4.8",
-    "uglify-js": "3.3.7"
+    "serve": "6.4.8"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
   }
 }

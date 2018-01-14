@@ -4,7 +4,7 @@ node_js:
   - 7
   - 8
   - 9
-  - */lts
+  - "*/lts"
 script: npm run build
 cache:
   directories: node_modules/
